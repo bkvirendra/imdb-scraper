@@ -1,13 +1,26 @@
 #!/usr/bin/env python
 
-import sys
+import os
 import requests
 import lxml.html
 
+from flask import Flask
+from flask import request
+from flask import jsonify
+from flask import render_template
 
-def main(id):
-    if id:
-        hxs = lxml.html.document_fromstring(requests.get("http://www.imdb.com/title/" + id).content)
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+
+@app.route('/get/')
+def get():
+    if request.args.get("id") is not None and request.args.get("id").startswith('tt'):
+        hxs = lxml.html.document_fromstring(requests.get("http://www.imdb.com/title/" + request.args.get("id")).content)
         movie = {}
         try:
             movie['title'] = hxs.xpath('//*[@id="overview-top"]/h1/span[1]/text()')[0].strip()
@@ -77,8 +90,9 @@ def main(id):
             movie['votes'] = ""
     else:
         return "invalid id"
-    return movie
+    return jsonify(movie)
 
 
 if __name__ == '__main__':
-    print main(sys.argv[1])
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
