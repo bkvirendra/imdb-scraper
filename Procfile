@@ -1,1 +1,1 @@
-web: python imdb.py
+web: gunicorn imdb:app -b 0.0.0.0:$PORT
