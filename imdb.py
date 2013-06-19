@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import os
 import requests
 import lxml.html
 
@@ -94,4 +94,5 @@ def get():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
