@@ -85,7 +85,7 @@ def get():
         except IndexError:
             movie['storyline'] = ""
         try:
-            movie['votes'] = hxs.xpath('//*[@id="titleStoryLine"]/div[1]/p/text()')[0].strip()
+            movie['votes'] = hxs.xpath('//*[@id="overview-top"]/div[3]/div[3]/a[1]/span/text()')[0].strip()
         except IndexError:
             movie['votes'] = ""
     else:
