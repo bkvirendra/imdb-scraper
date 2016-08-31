@@ -1,4 +1,4 @@
-imdb-scraper
+Host your own IMDB API using imdb-scraper script running flask server
 ============
 
 ####Following are the dependencies for it:
@@ -8,13 +8,12 @@ imdb-scraper
     
 
 ####You can use it by passing any valid `imdb id` as an argument:
+####This starts the flask server serving
 
-For eg.
-
-    $ python imdb.py tt1392170
+    $ python imdb.py
     
     
 This will return a `JSON` object containing the data for the movie.
 
 
-try it out at http://getimdb.herokuapp.com/
+try it out at http://getimdb.v3r.uk/
