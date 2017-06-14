@@ -16,4 +16,4 @@ Host your own IMDB API using imdb-scraper script running flask server
 This will return a `JSON` object containing the data for the movie.
 
 
-try it out at http://getimdb.v3r.uk/
+try it out at https://getimdb.herokuapp.com/
